@@ -1,0 +1,58 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "createdAt": {
+        "type": "string",
+        "description": "Creation timestamp in ISO 8601 format with timezone offset"
+      },
+      "id": {
+        "type": "string",
+        "description": "Unique identifier (UUID)"
+      },
+      "name": {
+        "type": "string",
+        "description": "Item name"
+      },
+      "price": {
+        "type": "integer",
+        "description": "Item price"
+      },
+      "sellerId": {
+        "type": "integer",
+        "description": "Seller identifier"
+      },
+      "statistics": {
+        "type": "object",
+        "properties": {
+          "contacts": {
+            "type": "integer",
+            "description": "Number of contact requests"
+          },
+          "likes": {
+            "type": "integer",
+            "description": "Number of likes"
+          },
+          "viewCount": {
+            "type": "integer",
+            "description": "Number of views"
+          }
+        },
+        "required": [
+          "contacts",
+          "likes",
+          "viewCount"
+        ]
+      }
+    },
+    "required": [
+      "createdAt",
+      "id",
+      "name",
+      "price",
+      "sellerId",
+      "statistics"
+    ]
+  }
+}
