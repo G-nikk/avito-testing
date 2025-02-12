@@ -14,7 +14,7 @@ public class ApiTests {
     private final String WRONG_ITEM_ID = "7a8fe969-2a57-468e-82c9-1982d22023c4";
 
     @ParameterizedTest
-    @ValueSource(strings = {"1", "123", "12345"})
+    @ValueSource(strings = {"1", "12", "12345"})
     public void getAllItemsBySellerId(String sellerId) {
         RestAssured
                 .get(BASE_URL + "/" + sellerId + "/item")
@@ -40,7 +40,8 @@ public class ApiTests {
                 .body(matchesJsonSchemaInClasspath("schemas/GetItemByIdResponse.json"));
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"7a8fe969-2a57-468e-82c9-1982d22023c4", " ", "#"})
     public void getItemByWrongId() {
         RestAssured
                 .get(BASE_URL + "/item/" + WRONG_ITEM_ID)
@@ -52,5 +53,29 @@ public class ApiTests {
                 .body("status", equalTo("404"));
     }
 
+    @Test
+    public void getItemWithoutId() {
+        RestAssured
+                .get(BASE_URL + "/item/")
+                .then()
+                .assertThat()
+                .statusCode(404)
+                .and()
+                .contentType(ContentType.JSON)
+                .body("code", equalTo(404));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"id", "13"})
+    public void getItemByWrongIdFormat(String itemId) {
+        RestAssured
+                .get(BASE_URL + "/item/" + itemId)
+                .then()
+                .assertThat()
+                .statusCode(500)
+                .and()
+                .contentType(ContentType.JSON)
+                .body("code", equalTo(500));
+    }
 
 }
