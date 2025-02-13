@@ -1,0 +1,25 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "contacts": {
+        "type": "integer",
+        "description": "Number of contact requests"
+      },
+      "likes": {
+        "type": "integer",
+        "description": "Number of likes"
+      },
+      "viewCount": {
+        "type": "integer",
+        "description": "Number of views"
+      }
+    },
+    "required": [
+      "contacts",
+      "likes",
+      "viewCount"
+    ]
+  }
+}

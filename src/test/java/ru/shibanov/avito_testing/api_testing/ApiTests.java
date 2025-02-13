@@ -14,6 +14,8 @@ public class ApiTests {
     private final String BASE_URL = "https://qa-internship.avito.com/api/1";
     private final String ITEM_ID = "7a8fe969-2a57-468e-82c9-1982d22023c5";
     private final String WRONG_ITEM_ID = "7a8fe969-2a57-468e-82c9-1982d22023c4";
+    private final String STATISTIC_ID = "0cd4183f-a699-4486-83f8-b513dfde477a";
+    private final String WRONG_STATISTIC_ID = "0cd4183f-a699-4486-83f8-b513dfde478a";
 
     @BeforeEach
     public void setup() {
@@ -22,7 +24,7 @@ public class ApiTests {
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "12", "12345"})
-    public void getAllItemsBySellerIdResponseBodyCheck(String sellerId) {
+    public void getAllItemsBySellerIdCorrectResponseBodyCheck(String sellerId) {
         RestAssured
                 .get("/" + sellerId + "/item")
                 .then()
@@ -36,7 +38,7 @@ public class ApiTests {
     }
 
     @Test
-    public void getItemByIdResponseBodyCheck() {
+    public void getItemByIdCorrectResponseBodyCheck() {
         RestAssured
                 .get("/item/" + ITEM_ID)
                 .then()
@@ -86,7 +88,7 @@ public class ApiTests {
     }
 
     @Test
-    public void postItemResponseBodyCheck() {
+    public void postItemCorrectResponseBodyCheck() {
         RestAssured
                 .given()
                 .contentType(ContentType.JSON)
@@ -107,6 +109,35 @@ public class ApiTests {
                 .then()
                 .assertThat()
                 .statusCode(201);
+    }
+
+    @Test
+    public void getStatisticByIdCorrectResponseBodyCheck() {
+        RestAssured
+                .get("/statistic/" + STATISTIC_ID)
+                .then()
+                .assertThat()
+                .body(matchesJsonSchemaInClasspath("schemas/GetStatisticByIdResponse.json"));
+    }
+
+    @Test
+    public void getStatisticByIdCorrectStatusCodeCheck() {
+        RestAssured
+                .get("/statistic/" + STATISTIC_ID)
+                .then()
+                .assertThat()
+                .statusCode(200);
+    }
+
+    @Test
+    public void getStatisticByWrongIdCorrectStatusCodeCheck() {
+        RestAssured
+                .get("/statistic/" + WRONG_STATISTIC_ID)
+                .then()
+                .assertThat()
+                .statusCode(404)
+                .and()
+                .body("status", equalTo("404"));
     }
 
     private JSONObject createItemRequestBody() {
