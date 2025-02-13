@@ -140,6 +140,18 @@ public class ApiTests {
                 .body("status", equalTo("404"));
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"12", "@"})
+    public void getStatisticByWrongIdFormatCorrectStatusCodeCheck(String id) {
+        RestAssured
+                .get("/statistic/" + id)
+                .then()
+                .assertThat()
+                .statusCode(400)
+                .and()
+                .body("status", equalTo("400"));
+    }
+
     private JSONObject createItemRequestBody() {
         JSONObject statistics = new JSONObject();
         statistics.put("contacts", 3);
