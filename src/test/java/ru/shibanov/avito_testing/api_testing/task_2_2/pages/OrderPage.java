@@ -4,12 +4,20 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$$x;
+import static com.codeborne.selenide.Selenide.$x;
 
 
 public class OrderPage {
     private final ElementsCollection ordersSumCollection = $$x("//p[@class='chakra-text css-0']");
     private final ElementsCollection itemsPriceCollection = $$x("//p[contains(text(),\"Цена\")]");
     private final ElementsCollection showItemsButtonCollection = $$x("//button[contains(text(),\"Показать\")]");
+    private final SelenideElement ordersButton = $x("//div[contains(text(),\"Заказы\")]");
+
+    public OrderPage(){}
+
+    public void goToOrdersPage() {
+        ordersButton.click();
+    }
 
     public void showItems() {
         showItemsButtonCollection.stream().forEach(SelenideElement::click);

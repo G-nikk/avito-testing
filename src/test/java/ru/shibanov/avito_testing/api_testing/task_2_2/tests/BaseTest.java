@@ -7,6 +7,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 public abstract class BaseTest {
+
+    private final static String BASE_URL = "http://tech-avito-intern.jumpingcrab.com";
+
     @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
@@ -15,6 +18,7 @@ public abstract class BaseTest {
         Configuration.headless = true;
         Configuration.browserSize = "1920x1080";
         System.setProperty("chromeoptions.args", "\"--no-sandbox\",\"--disable-dev-shm-usage\",\"--remote-debugging-port=9222\",\"--headless\"");
+        Selenide.open(BASE_URL);
     }
 
     @AfterEach
