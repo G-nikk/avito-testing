@@ -11,13 +11,13 @@ public class MainPage {
     private final ElementsCollection filters = $$x("//div[@style=\"transform-origin: var(--popper-transform-origin); opacity: 1; visibility: visible; transform: none; will-change: auto;\"]//button");
     private final SelenideElement openFiltersButton = $x("//div[@style=\"transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.8); will-change: auto;\"]");
 
-    public int countItems() {
+    private int countItems() {
         return items.size();
     }
 
-    public boolean checkAmountOfItemsOnPage() {
+    public boolean checkAmountOfItemsOnPageForEachFilter() {
         for (SelenideElement filter : filters) {
-            filter.click();
+            openFilters();
             int expectedItemsAmount = Integer.parseInt(filter.getText());
             int actualItemsAmount = countItems();
             if (actualItemsAmount != expectedItemsAmount) {
@@ -27,7 +27,7 @@ public class MainPage {
         return true;
     }
 
-    public void openFilters() {
+    private void openFilters() {
         openFiltersButton.click();
     }
 }

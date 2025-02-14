@@ -7,7 +7,6 @@ import ru.shibanov.avito_testing.api_testing.task_2_2.pages.OrderPage;
 
 public class OrdersSumTest extends BaseTest {
 
-
     @Test
     public void CorrectOrdersSumCheck() {
         OrderPage orderPage = new OrderPage();
@@ -17,6 +16,4 @@ public class OrdersSumTest extends BaseTest {
         int ordersSum = orderPage.getOrdersSum();
         Assertions.assertEquals(ordersSum, itemsSum);
     }
-
-
 }
