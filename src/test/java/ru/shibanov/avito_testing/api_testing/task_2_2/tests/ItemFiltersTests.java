@@ -6,9 +6,15 @@ import ru.shibanov.avito_testing.api_testing.task_2_2.pages.MainPage;
 
 public class ItemFiltersTests extends BaseTest {
 
+    private final MainPage mainPage = new MainPage();
+
     @Test
     public void ItemsAmountFilterCheck() {
-        MainPage mainPage = new MainPage();
         Assertions.assertTrue(mainPage.checkAmountOfItemsOnPageForEachFilter());
+    }
+
+    @Test
+    public void ItemsPriceFilterCheck() {
+        Assertions.assertTrue(mainPage.checkPriceFilter());
     }
 }
