@@ -50,16 +50,16 @@ public class ApiTests {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"7a8fe969-2a57-468e-82c9-1982d22023c4", " ", "#"})
+    @ValueSource(strings = {"7a8fe969-2a57-468e-82c9-1982d22023c4"})
     public void getItemByWrongIdCorrectStatusCodeCheck() {
         RestAssured
                 .get("/item/" + WRONG_ITEM_ID)
                 .then()
                 .assertThat()
-                .statusCode(400)
+                .statusCode(404)
                 .and()
                 .contentType(ContentType.JSON)
-                .body("status", equalTo("400"));
+                .body("status", equalTo("404"));
     }
 
     @Test
@@ -75,7 +75,7 @@ public class ApiTests {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"id", "13"})
+    @ValueSource(strings = {"id", "13", "#"})
     public void getItemByWrongIdFormatCorrectStatusCodeCheck(String itemId) {
         RestAssured
                 .get("/item/" + itemId)

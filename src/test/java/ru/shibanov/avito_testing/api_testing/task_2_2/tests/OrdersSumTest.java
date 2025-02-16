@@ -1,6 +1,5 @@
 package ru.shibanov.avito_testing.api_testing.task_2_2.tests;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.shibanov.avito_testing.api_testing.task_2_2.pages.OrderPage;
