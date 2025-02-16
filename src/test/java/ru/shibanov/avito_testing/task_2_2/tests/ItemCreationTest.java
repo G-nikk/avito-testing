@@ -1,9 +1,9 @@
-package ru.shibanov.avito_testing.api_testing.task_2_2.tests;
+package ru.shibanov.avito_testing.task_2_2.tests;
 
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.shibanov.avito_testing.api_testing.task_2_2.pages.MainPage;
+import ru.shibanov.avito_testing.task_2_2.pages.MainPage;
 
 public class ItemCreationTest extends BaseTest {
     private final String itemName = "Мухаааааа";

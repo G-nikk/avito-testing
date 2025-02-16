@@ -1,8 +1,8 @@
-package ru.shibanov.avito_testing.api_testing.task_2_2.tests;
+package ru.shibanov.avito_testing.task_2_2.tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.shibanov.avito_testing.api_testing.task_2_2.pages.MainPage;
+import ru.shibanov.avito_testing.task_2_2.pages.MainPage;
 
 public class ItemFiltersTests extends BaseTest {
 

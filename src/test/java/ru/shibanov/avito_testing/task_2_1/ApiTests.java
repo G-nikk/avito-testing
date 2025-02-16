@@ -1,4 +1,4 @@
-package ru.shibanov.avito_testing.api_testing.task_2_1;
+package ru.shibanov.avito_testing.task_2_1;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;

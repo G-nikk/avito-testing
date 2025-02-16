@@ -1,4 +1,4 @@
-package ru.shibanov.avito_testing.api_testing.task_2_2.pages;
+package ru.shibanov.avito_testing.task_2_2.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
